@@ -1,0 +1,2 @@
+from ubuntu:14.04
+RUN sudo apt-get update && sudo apt-get install -y  python-software-properties && sudo apt-add-repository ppa:nginx/development && sudo apt-get update  && sudo apt-get -y install nginx && sudo apt-get install -y  nodejs && sudo apt-get install -y npm

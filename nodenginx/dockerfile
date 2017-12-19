@@ -1,0 +1,7 @@
+from nginx
+RUN apt-get update && apt-get install -y wget 
+workdir /mnt
+RUN wget https://nodejs.org/dist/v8.9.1/node-v8.9.1.tar.gz && tar -xvf node-v8.9.1.tar.gz 
+workdir node-v8.9.1
+RUN apt-get install -y g++ pkg-config python make &&  ./configure && make && make install
+expose 80

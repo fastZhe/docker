@@ -1,0 +1,5 @@
+from centos:7
+ADD bendandan-linux /usr/local 
+RUN chmod +x /usr/local/bendandan-linux
+expose 3000
+cmd /usr/local/bendandan-linux

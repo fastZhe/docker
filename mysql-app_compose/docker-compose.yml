@@ -1,0 +1,16 @@
+mysqldb:
+ image: mysql:5.6
+ environment:
+  MYSQL_ROOT_PASSWORD: 123456 
+ volumes:
+  - /mysqldata:/mysql_data
+ ports:
+  - 3306:3306
+mywebapp:
+ image: hzdan/javatomcat1.7
+ volumes:
+  - /mnt:/usr/local/tomcat/webapps
+ links:
+  - mysqldb:db
+ ports:
+  - 8080:8080

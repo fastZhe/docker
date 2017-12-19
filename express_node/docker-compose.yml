@@ -1,0 +1,16 @@
+version: "3"
+services:
+ mysqla: 
+  image: mysql:5.6
+  environment:
+   MYSQL_ROOT_PASSWORD: 123456
+  volumes:
+   - /mysqldata:/mysql_data
+  ports:
+   - 3306:3306 
+ express:
+  build: ./express
+  ports:
+   - 80:3000
+  links:
+   - mysqla:db
