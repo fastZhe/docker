@@ -1,0 +1,7 @@
+from centos:6
+maintainer hz
+RUN yum install wget -y &&mkdir -p /back/yum &&  mv /etc/yum.repos.d/* /back/yum/ &&  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo &&yum clean all && yum makecache
+run yum install openssh-server openssh-clients  -y && echo "root:yoyosys" | chpasswd && sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config 
+run  cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&  ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key && ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key  && sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && mkdir /var/run/sshd   
+expose 22
+cmd /usr/sbin/sshd -D
